@@ -1,5 +1,5 @@
 import { User } from "../model/user.model.js"; // Import the User model
-import { errorResponse, successResponse } from "../utils/response";
+import { errorResponse, successResponse } from "../utils/response.js";
 
 const {
   PAYTM_MID,
