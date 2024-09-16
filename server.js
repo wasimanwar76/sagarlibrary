@@ -1,7 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-// import cors from "cors";
+import cors from "cors";
 
 import userRoute from "./route/user.route.js";
 import { paymentRoute } from "./route/payment.route.js";
@@ -25,13 +25,11 @@ const connectDB = async () => {
 };
 
 const SERVERPORT = PORT || 9000;
-// const origin = CORS_ORIGIN || "http://localhost:3000";
+// const origin = CORS_ORIGIN || "http://localhost:3000" || 35.160.120.126
+// 44.233.151.27 ||
+// 34.211.200.85 ||;
 
-// app.use(
-//   cors({
-//     origin,
-//   })
-// );
+app.use(cors());
 app.use(express.json());
 
 app.use("/api/v1/auth", userRoute);
