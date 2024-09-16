@@ -32,7 +32,10 @@ const userSchema = new mongoose.Schema(
       default: null,
     },
 
-    slot: { type: String, enum: ["6am-12pm", "12pm-6pm", "6pm-12am"] },
+    slot: {
+      type: String,
+      enum: ["6am-10am", "10am-2pm", "2pm-6pm", "6pm-10pm"],
+    },
     paymentStatus: {
       type: String,
       enum: ["pending", "completed"],

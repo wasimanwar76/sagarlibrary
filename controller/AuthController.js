@@ -4,6 +4,7 @@ import { errorResponse, successResponse } from "../utils/response.js";
 import { generateToken } from "../utils/jsonwebtojen.js";
 import crypto from "crypto";
 import { verifyEmail } from "../mail/authmail/verifyMail.js";
+import { welcomeEmail } from "../mail/authmail/welcomeMail.js";
 
 const AuthController = {
   async signUp(req, res) {
@@ -46,7 +47,7 @@ const AuthController = {
         { name: newUser.name, email: newUser.email },
         newUser.verifyToken
       );
-
+      await welcomeEmail({ name: newUser.name, email: newUser.email });
       const userData = {
         name: newUser.name,
         email: newUser.email,
