@@ -80,7 +80,16 @@ const AuthController = {
       const token = generateToken({ id: user.id, name: user.name });
 
       // Respond with token
-      return successResponse(res, "logged in successful", token);
+
+      const userData = {
+        name: user.name,
+        email: user.email,
+        userType: user.userType,
+        phone: user.phone,
+        isverified: user.userVerified,
+        token,
+      };
+      return successResponse(res, "logged in successful", userData);
     } catch (error) {
       // Handle server errors
       return errorResponse(res, "Server error", error.message);
