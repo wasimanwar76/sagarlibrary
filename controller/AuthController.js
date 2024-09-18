@@ -38,24 +38,24 @@ const AuthController = {
       });
 
       await newUser.save();
-      const token = generateToken({
-        id: newUser.id,
-        name: newUser.name,
-        role: newUser.userType,
-      });
+      // const token = generateToken({
+      //   id: newUser.id,
+      //   name: newUser.name,
+      //   role: newUser.userType,
+      // });
       await verifyEmail(
         { name: newUser.name, email: newUser.email },
         newUser.verifyToken
       );
       await welcomeEmail({ name: newUser.name, email: newUser.email });
-      const userData = {
-        name: newUser.name,
-        email: newUser.email,
-        userType: newUser.userType,
-        phone: newUser.phone,
-        token,
-      };
-      return successResponse(res, "User created successfully", userData, 201);
+      // const userData = {
+      //   name: newUser.name,
+      //   email: newUser.email,
+      //   userType: newUser.userType,
+      //   phone: newUser.phone,
+      //   token,
+      // };
+      return successResponse(res, "User created successfully", "", 201);
     } catch (error) {
       return errorResponse(res, "Server error", error.message);
     }
@@ -85,8 +85,8 @@ const AuthController = {
         name: user.name,
         email: user.email,
         userType: user.userType,
-        phone: user.phone,
         isverified: user.userVerified,
+        phone: user.phone,
         token,
       };
       return successResponse(res, "logged in successful", data);
